@@ -6,6 +6,6 @@ to make the editing process a little easier.  Examples and limited explanations 
 ## Usage
 
 * Install or otherwise copy *preamble.sty* to your working tex directory. 
-* Add *\usepackage{preamble} to the top of your .tex file.
+* Add *\usepackage{preamble}* to the top of your .tex file.
 
 And that's it.  You should be good to go.  
