@@ -1,0 +1,145 @@
+\ProvidesPackage{preamble}
+
+\let\proof\relax
+\let\endproof\relax
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{nicefrac,xfrac}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{mathtools}
+\RequirePackage{commath}
+\RequirePackage{bbm}  % math font for 1 vector
+%\RequirePackage{enumerate}
+%\RequirePackage{enumitem}   % added to get alpha enumerated lists
+\RequirePackage{arydshln}  % dashed lines in arrays...
+\RequirePackage{calrsfs}  % fancy curly fonts...
+\RequirePackage{scrextend} % block indents...
+\RequirePackage{xcolor} % colours!
+\RequirePackage{booktabs} % Horizontal rules in tables
+\RequirePackage{siunitx} % Unit formatting (m/s, etc)
+% \RequirePackage{tikz-cd}  % drawing...
+% \RequirePackage{quiver}   % drawing graphs supported by website https://q.uiver.app/
+\RequirePackage{subdepth}  % fix subscript heights when no superscript present
+\RequirePackage{lmodern}
+
+\RequirePackage{ifthen}  % for optional arguments, etc
+\RequirePackage[sort,compress]{cite}
+
+\RequirePackage[font=footnotesize,labelfont=bf]{caption}
+\RequirePackage{subcaption}
+\RequirePackage{listings}
+% \RequirePackage[parfill]{parskip}
+\RequirePackage{float}
+\RequirePackage{hyperref}
+% \RequirePackage{algorithmicx}
+\RequirePackage{algorithm}
+% \algrenewcommand\algorithmicindent{0.5em}%
+\RequirePackage[noend]{algpseudocode}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\theoremstyle{plain}
+
+\setlength{\topsep}{3pt}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lem}{Lemma}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{cor}{Corollary}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{conj}{Conjecture}[theorem]
+\newtheorem{claim}{Claim}[theorem]
+\newtheorem{observation}{Observation}[theorem]
+\newtheorem{assumption}{Assumption}[theorem]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{algo}{Algorithm}[section]
+
+\newtheorem{rem}{Remark}[section]
+\newtheorem{remark}{Remark}[section]
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{defn}{Definition}[section]
+
+\newtheorem{problem}{Problem}[section]
+\newtheorem{prob}{Problem}[section]
+\newtheorem{subprob}{Sub Problem}[prob]
+\newtheorem{sol}{Solution}[section]
+
+
+\newtheorem*{rem*}{Remark}
+
+
+\newcommand{\ASnote}[1]{{\color{blue}#1}}
+\newcommand{\BGnote}[1]{{\color{teal}#1}}
+
+
+% Figure labelling options
+% \RequirePackage{alphalph} \renewcommand*{\thesubfigure}{\alphalph{\value{subfigure}}}%
+%%% numeric
+% \renewcommand*{\thesubfigure}{(\arabic{subfigure})}
+%%% prefixed with main fig number
+%\renewcommand*{\thesubfigure}{(\thefigure.\arabic{subfigure})}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\imp}[1]{{\color{red} #1}}
+\newcommand{\huh}[1]{{\color{teal} #1}}
+
+\newcommand{\Eg}{\text{E.g.,}~}
+\newcommand{\eg}{\text{e.g.,}~}
+\newcommand{\ie}{\text{i.e.,}~}
+\newcommand{\etc}{etc.}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\prb}{\mathbb{P}}
+\newcommand{\rth}{^{\text{th}}}
+
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+\newcommand{\rmp}{\raisebox{.2ex}{$\scriptstyle\mp$}}
+
+\newcommand{\q}{\paragraph{Question:}}
+
+\newcommand{\unk}[1][]{%
+   \ifthenelse{ \equal{#1}{} }
+      {\red{$^{\emph{[Citation?]~}}$}}
+      {\red{$^{\emph{[#1?]~}}$}}
+}
+
+\newcommand\oprocendsymbol{\hbox{$\bullet$}}
+\newcommand\oprocend{\relax\ifmmode\else\unskip\hfill\fi\oprocendsymbol}
+\def\eqoprocend{\tag*{$\bullet$}}
+
+\newcommand{\separator}{{\center{
+    \rule{1.0cm}{1pt}~\rule{0.2cm}{6pt}~\rule{1.0cm}{1pt}\\
+}}}
+
+\newcommand{\pb}{\mathbb{P}}
+
+\newcommand{\referee}[1]{\;
+  \begin{minipage}[t]{.95\textwidth}
+    ``{\color{blue} #1}''
+  \end{minipage}\medskip
+  }
+\newcommand{\res}{\textbf{Response: }}
+
+% Fix the mathcal alphabet to something more readable....
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\@ifundefined{ifproofing} {%
+    \newif\ifproofing
+  }{%
+  }  % \proofing defined
+  
+\ifproofing
+\newcommand{\flag}[1]{\red{\vspace{4mm}\textsc{{#1}}\\\vspace{4mm}}}
+\else
+\newcommand{\flag}[1]{}
+\fi 

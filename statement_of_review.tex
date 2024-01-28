@@ -1,0 +1,170 @@
+%% Statement of Revision for TASE Paper
+%% 2015
+
+\documentclass[10pt]{article}
+
+\usepackage{preamble}
+
+% \usepackage[usenames,dvipsnames]{color}
+
+\usepackage{palatino}
+\usepackage{bibentry}
+
+
+\usepackage{vmargin}
+\setpapersize{USletter}
+\setmarginsrb{2.25cm}{2.25cm}{2.25cm}{2.25cm}
+                 {12pt}{20pt}{12pt}{36pt}
+% \setmarginsrb{leftmargin}{topmargin}{rightmargin}{bottommargin}
+%               {headheight}{headsep}{footheight}{footskip}
+
+%% Enumerate environment, page 57 LaTeX Companion
+\renewcommand{\theenumi}{(\roman{enumi})}
+\renewcommand{\labelenumi}{\theenumi}
+
+
+
+\newcommand{\refereebit}[1]{\; ``{\small\color{red} \textit{#1}}'' }
+
+
+
+\urlstyle{same}
+
+
+\begin{document}
+
+\bibliographystyle{plain}
+
+\pagestyle{myheadings}
+\thispagestyle{empty}
+
+\markright{IEEE RA-L 21-2500 Revision}
+
+\headsep 0.5cm
+
+\bigskip
+
+\begin{flushright}
+  John Smith\\
+  \small
+  Department of Electrical and Computer Engineering\\
+  University of Waterloo\\
+ Email: \href{mailto:jsmith@uwaterloo.ca}{jsmith@uwaterloo.ca}
+\end{flushright}
+
+\vskip3em
+
+\noindent
+\begin{minipage}[t]{.55\textwidth}
+  \raggedright%
+[Editor] \\
+  \small
+Editor-in-Chief \\
+{[Journal]}\\
+  %{email: \texttt{h.nijmeijer@tue.nl}}
+\end{minipage}
+\hfill % US style
+\begin{minipage}[t]{.4\textwidth}
+\raggedleft % US style
+\today
+\end{minipage}\\[2.5em]
+
+
+\noindent \textbf{[JournalRef]: {\sl Paper Title}}
+
+\vskip2em
+
+\noindent Dear Professor [editor],\\%[0.5em]
+
+\noindent Please find enclosed the revision of our manuscript [paper], incorporating the comments of the reviewers.     \smallskip
+
+\noindent We would like to thank you and the reviewers for their thorough and careful review of the article. We have enclosed a statement of revision that details the edits along with a version of the manuscript with the edits highlighted in blue.  \\[1em]
+
+\noindent Sincerely, \\[1.5em]
+
+\noindent [author1] \\ 
+{[author2]}
+
+
+\clearpage
+\setcounter{page}{1}
+\parindent=0pt
+
+\begin{center}
+  {\bf \LARGE Statement of Revision}
+\end{center}
+
+\bigskip
+
+The following gives a detailed account of the changes made in this revision of the paper. We have structured this list in separate blocks, corresponding to the comments made by each of the Referees.  We have included a version of the manuscript in which changes from the previous submission are highlighted in blue text. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% REFEREE 1 %%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{saveenum}
+%% \setcounter{saveenum}{\value{enumi}}
+%% \setcounter{enumi}{\value{saveenum}}
+
+ % \bigskip
+
+ \hspace*{-25pt} \textbf{\large Comments by Area Editor}
+ %%
+ \begin{enumerate}
+   \renewcommand{\labelenumi}{[AE:\,\arabic{enumi}]}
+
+ \item \referee{This paper proposed... The authors are encouraged to address the concerns of the reviewers. } 
+
+\textbf{Response:}  Thank you for reviewing our submission.
+
+We are happy to hear that the reviewers support our work and hope that our changes address their main concerns. We have considered the comments very carefully and addressed each one to improve clarity and readability. %We added more detailed descriptions at various parts of the paper with taking extra care in further explaining technically dense sections of the paper.
+
+\end{enumerate}
+
+
+\bigskip
+%%
+\hspace*{-25pt} \textbf{\large Comments by Reviewer 1}\\
+%%
+
+
+
+\begin{enumerate}
+  \renewcommand{\labelenumi}{[R1:\,\arabic{enumi}]}
+
+
+ \item \referee{The paper focuses on...
+
+The work is generally well motivated and interesting and the results are convincing. }
+
+ \textbf{Response: } We thank the reviewer for their valuable time and insightful comments.
+
+
+ \item \referee{In your work, on page...}
+ \textbf{Response: } Thank you for pointing out this oversight.  We have rewritten this paragraph to better explain the source of our results.
+ 
+ \begin{quote}
+    After performing experiments...   
+ \end{quote}
+
+\end{enumerate}
+
+
+
+\bigskip
+%%
+\hspace*{-25pt} \textbf{\large Comments by Reviewer 2}\\
+%%
+
+
+
+\begin{enumerate}
+  \renewcommand{\labelenumi}{[R2:\,\arabic{enumi}]}
+
+ \item \referee{There are typos in section ....}
+ \textbf{Response: } Thank you for your response.  We have corrected the text errors you raised.
+
+\end{enumerate}
+
+
+\end{document}

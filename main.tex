@@ -1,0 +1,196 @@
+
+
+\newif\ifproofing\proofingtrue
+% \newif\ifproofing\proofingfalse
+
+\ifproofing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\else
+%%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[journal]{IEEEtran}
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+% \overrideIEEEmargins                                      % Needed to meet printer requirements.
+%%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
+
+
+\usepackage{preamble}
+\usepackage{lipsum}
+
+\title{\LARGE \bf
+Title for Awesome Paper}
+
+
+\urldef{\real}\url{totally.a.real.person@uwaterloo.ca}
+
+\author{Real Person
+\thanks{This research is partially supported by your local producer of recreational beverages. }
+\thanks{The authors are with the Department of Electrical and Computer Engineering, University of Waterloo, Waterloo ON, N2L 3G1 Canada (\real)
+    }
+}
+
+
+\begin{document}
+
+
+\newpage
+% \maketitle
+% \thispagestyle{empty}
+% \pagestyle{empty}
+
+\section{Breaking Up Equations}
+\theorem{Equation can be Broken}
+
+When working with equations, there is a way to insert text comments and maintain alignment~\cite{wang2023cooperative}. 
+
+\flag{This is an important note!} 
+and some stuff after
+
+\begin{proof}
+
+It is occasionally useful to insert a longer comment that explains a step.  However, if you break the equation into separate alignment sections, then the alignment is lost:
+ \begin{align}
+    b_{(s,m),t+1}\left(\begin{matrix}
+        s^a = i, \\ m^a = k
+    \end{matrix} \right) &= \pb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
+    &= \frac{\pb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\pb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\     
+ \end{align}
+
+Comment explaining why the previous line is way to complicated and can be easily simplified
+
+\begin{align}
+     &\propto \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
+    &\propto \sum_{j=1}^{|S|} \left[ \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
+    &~~~~~~~~~~~~~~~~\left. \pb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \pb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
+    &\propto  \sum_{j=1}^{|S|} O(o_{t+1},s_{t+1}^a=i,s_t^a=j,m_t=k) T_s(s_{t+1}^a=i, s_{t}^a=j, m_t ) b_{(s,m),t}(s_t^a = j, m_{t}^a = k).
+\end{align}
+
+
+\newpage
+
+Dropping in a \textbackslash text\{ ... \} block is worse:
+
+\begin{align}
+     b_{(s,m),t+1}\left(\begin{matrix}
+        s^a = i, \\ m^a = k
+    \end{matrix} \right) &= \pb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
+    &= \frac{\pb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\pb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\
+    \text{ Comment explaining why the previous line is way to complicated and can be easily simplified } \\
+          &\propto \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
+    &\propto \sum_{j=1}^{|S|} \left[ \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
+    &~~~~~~~~~~~~~~~~\left. \pb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \pb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
+    &\propto  \sum_{j=1}^{|S|} O(o_{t+1},s_{t+1}^a=i,s_t^a=j,m_t=k) T_s(s_{t+1}^a=i, s_{t}^a=j, m_t ) b_{(s,m),t}(s_t^a = j, m_{t}^a = k).
+\end{align}
+ 
+
+
+\newpage
+
+The solution is to use a \textbackslash intertext\{ ... \} or \textbackslash shortintertext\{ ... \} block:
+
+\begin{align}
+     b_{(s,m),t+1}\left(\begin{matrix}
+        s^a = i, \\ m^a = k
+    \end{matrix} \right) &= \pb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
+    &= \frac{\pb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\pb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\
+    \shortintertext{ Comment explaining why the previous line is way to complicated and can be easily simplified } 
+          &\propto \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
+    &\propto \sum_{j=1}^{|S|} \left[ \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
+    &~~~~~~~~~~~~~~~~\left. \pb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \pb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
+    &\propto  \sum_{j=1}^{|S|} O(o_{t+1},s_{t+1}^a=i,s_t^a=j,m_t=k) T_s(s_{t+1}^a=i, s_{t}^a=j, m_t ) b_{(s,m),t}(s_t^a = j, m_{t}^a = k).
+\end{align}
+ 
+\end{proof}
+
+\newpage
+\section{Citations!}
+\theorem{Citation Placeholders}
+
+Inserting a placeholder allows you to keep writing without breaking flow, while making a reminder to come back and resolve it later
+
+\begin{proof}
+    Using the new command function, define
+    \begin{lstlisting}
+            \newcommand{\unk}[1][]{%
+               \ifthenelse{ \equal{#1}{} }
+                  {\red{$^{\emph{[Citation?]~}}$}}
+                  {\red{$^{\emph{[#1?]~}}$}}
+            }
+    \end{lstlisting}
+
+    Now, when composing, instead of coming to a stop and immediately looking up the necessary information, you can leave a place holder.  An optional argument allows notes to your future self.
+
+    \begin{quote}
+        The quick brown fox \textbackslash unk jumped over the lazy dog \textbackslash unk[the cat]...
+    \end{quote}
+
+    becomes
+    \begin{quote}
+        The quick brown fox\unk jumped over the lazy dog\unk[the cat]...
+    \end{quote}
+    
+\end{proof}
+
+\newpage
+\section{Proofing Copy}
+
+\theorem{Proofing}
+
+While the IEEE double column has a clean, professional look, it's often easier to markup double space.  Using a flag, and some header variables, switching between proofing and presentation is as easy as commenting out a line.
+
+\begin{proof}
+
+    Make use of the \textbackslash \textit{newif} command to define a proof flag. Then at the start of your document set up two configurations.
+    \begin{lstlisting}
+    \newif\ifproofing\proofingtrue
+    %\newif\ifproofing\proofingfalse
+    
+    \ifproofing
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \documentclass{article}
+    \usepackage[margin=1in]{geometry}
+    \usepackage{setspace}
+    \doublespacing
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \else
+    %%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
+    \documentclass[journal]{IEEEtran}
+    \IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                              % you want to use the \thanks command
+    % \overrideIEEEmargins                                      % Needed to meet printer requirements.
+    %%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fi
+    \end{lstlisting}
+
+    \newpage
+    You can also add comments that appear in the proofing document, but are removed automatically when you go to final copy.  
+
+    \begin{lstlisting}
+        \@ifundefined{ifproofing} 
+        {%
+            \newif\ifproofing
+        }{%
+            % \proofing defined
+        }  
+        
+        \ifproofing
+            \newcommand{\flag}[1]{\red{\vspace{4mm}\textsc{{#1}}\\\vspace{4mm}}}
+        \else
+            \newcommand{\flag}[1]{}
+        \fi 
+    \end{lstlisting}
+
+    \end{proof}
+
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}
