@@ -2,17 +2,21 @@
 
 \let\proof\relax
 \let\endproof\relax
+
+\RequirePackage{ifthen}  % for optional arguments, etc
+
+\RequirePackage[pdftex]{graphicx}
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
-\RequirePackage{nicefrac,xfrac}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
-\RequirePackage{graphicx}
+\RequirePackage{nicefrac,xfrac}
 \RequirePackage{mathtools}
 \RequirePackage{commath}
+\RequirePackage{soul}
 \RequirePackage{bbm}  % math font for 1 vector
-%\RequirePackage{enumerate}
-%\RequirePackage{enumitem}   % added to get alpha enumerated lists
+\RequirePackage{enumerate}
+\RequirePackage{enumitem}   % added to get alpha enumerated lists
 \RequirePackage{arydshln}  % dashed lines in arrays...
 \RequirePackage{calrsfs}  % fancy curly fonts...
 \RequirePackage{scrextend} % block indents...
@@ -21,22 +25,26 @@
 \RequirePackage{siunitx} % Unit formatting (m/s, etc)
 % \RequirePackage{tikz-cd}  % drawing...
 % \RequirePackage{quiver}   % drawing graphs supported by website https://q.uiver.app/
-\RequirePackage{subdepth}  % fix subscript heights when no superscript present
-\RequirePackage{lmodern}
-
-\RequirePackage{ifthen}  % for optional arguments, etc
 \RequirePackage[sort,compress]{cite}
+\RequirePackage{subdepth}  % fix subscript heights when no superscript present
+% \RequirePackage{lmodern}
+
 
 \RequirePackage[font=footnotesize,labelfont=bf]{caption}
 \RequirePackage{subcaption}
 \RequirePackage{listings}
 % \RequirePackage[parfill]{parskip}
 \RequirePackage{float}
-\RequirePackage{hyperref}
 % \RequirePackage{algorithmicx}
 \RequirePackage{algorithm}
 % \algrenewcommand\algorithmicindent{0.5em}%
 \RequirePackage[noend]{algpseudocode}
+
+
+% N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
+\usepackage[pdftex,pagebackref=false]{hyperref} % with basic options
+%\usepackage[pdftex,pagebackref=true]{hyperref}
+		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -100,6 +108,7 @@
 \newcommand{\etc}{etc.}
 \newcommand{\real}{\mathbb{R}}
 \newcommand{\prb}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
 \newcommand{\rth}{^{\text{th}}}
 \newcommand{\inc}{{\color{red}{[INC]}}}
 
@@ -121,8 +130,6 @@
 \newcommand{\separator}{{\center{
     \rule{1.0cm}{1pt}~\rule{0.2cm}{6pt}~\rule{1.0cm}{1pt}\\
 }}}
-
-\newcommand{\pb}{\mathbb{P}}
 
 \newcommand{\referee}[1]{\;
   \begin{minipage}[t]{.95\textwidth}

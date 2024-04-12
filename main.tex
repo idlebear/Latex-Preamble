@@ -1,24 +1,23 @@
 
 
-\newif\ifproofing\proofingtrue
+% \newif\ifproofing\proofingtrue
 % \newif\ifproofing\proofingfalse
 
-\ifproofing
+% \ifproofing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \doublespacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\else
-%%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[journal]{IEEEtran}
-\IEEEoverridecommandlockouts                              % This command is only needed if 
-                                                          % you want to use the \thanks command
-% \overrideIEEEmargins                                      % Needed to meet printer requirements.
-%%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
-\fi
-
+% \else
+% %%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
+% \documentclass[journal]{IEEEtran}
+% \IEEEoverridecommandlockouts                              % This command is only needed if 
+%                                                           % you want to use the \thanks command
+% % \overrideIEEEmargins                                      % Needed to meet printer requirements.
+% %%%%%%%%%%%%%%%%%%%%%%%%% comment out for proofing... %%%%%%%%%%%%%%%%%%%%%%%%%%
+% \fi
 
 \usepackage{preamble}
 \usepackage{lipsum}
@@ -58,16 +57,16 @@ It is occasionally useful to insert a longer comment that explains a step.  Howe
  \begin{align}
     b_{(s,m),t+1}\left(\begin{matrix}
         s^a = i, \\ m^a = k
-    \end{matrix} \right) &= \pb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
-    &= \frac{\pb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\pb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\     
+    \end{matrix} \right) &= \prb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
+    &= \frac{\prb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \prb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\prb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) }     
  \end{align}
 
 Comment explaining why the previous line is way to complicated and can be easily simplified
 
 \begin{align}
-     &\propto \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
-    &\propto \sum_{j=1}^{|S|} \left[ \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
-    &~~~~~~~~~~~~~~~~\left. \pb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \pb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
+     &\propto \prb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \prb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
+    &\propto \sum_{j=1}^{|S|} \left[ \prb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
+    &~~~~~~~~~~~~~~~~\left. \prb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \prb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
     &\propto  \sum_{j=1}^{|S|} O(o_{t+1},s_{t+1}^a=i,s_t^a=j,m_t=k) T_s(s_{t+1}^a=i, s_{t}^a=j, m_t ) b_{(s,m),t}(s_t^a = j, m_{t}^a = k).
 \end{align}
 
@@ -79,12 +78,12 @@ Dropping in a \textbackslash text\{ ... \} block is worse:
 \begin{align}
      b_{(s,m),t+1}\left(\begin{matrix}
         s^a = i, \\ m^a = k
-    \end{matrix} \right) &= \pb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
-    &= \frac{\pb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\pb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\
+    \end{matrix} \right) &= \prb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
+    &= \frac{\prb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \prb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\prb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\
     \text{ Comment explaining why the previous line is way to complicated and can be easily simplified } \\
-          &\propto \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
-    &\propto \sum_{j=1}^{|S|} \left[ \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
-    &~~~~~~~~~~~~~~~~\left. \pb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \pb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
+          &\propto \prb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \prb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
+    &\propto \sum_{j=1}^{|S|} \left[ \prb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
+    &~~~~~~~~~~~~~~~~\left. \prb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \prb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
     &\propto  \sum_{j=1}^{|S|} O(o_{t+1},s_{t+1}^a=i,s_t^a=j,m_t=k) T_s(s_{t+1}^a=i, s_{t}^a=j, m_t ) b_{(s,m),t}(s_t^a = j, m_{t}^a = k).
 \end{align}
  
@@ -97,12 +96,12 @@ The solution is to use a \textbackslash intertext\{ ... \} or \textbackslash sho
 \begin{align}
      b_{(s,m),t+1}\left(\begin{matrix}
         s^a = i, \\ m^a = k
-    \end{matrix} \right) &= \pb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
-    &= \frac{\pb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\pb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\
+    \end{matrix} \right) &= \prb( s_{t+1}^a = i, m_{t+1}^a = k | o_{t+1}, s_{t}^e, u_{t}, s_t^a, m_t^a, b_{(s,m),t} ) \\
+    &= \frac{\prb( o_{t+1} | s_{t+1}^a = i, m_{t+1}^a = k, s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} ) \prb( s_{t+1}^a = i, m_{t+1}^a = k |  s_{i,t}^e, u_{t},  s_t^a, m_t^a, b_{t} )}{\prb(o_{t+1} | s_{i,t}^e, u_{t}, s_t^a, m_t^a, b_{t}   ) } \\
     \shortintertext{ Comment explaining why the previous line is way to complicated and can be easily simplified } 
-          &\propto \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \pb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
-    &\propto \sum_{j=1}^{|S|} \left[ \pb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
-    &~~~~~~~~~~~~~~~~\left. \pb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \pb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
+          &\propto \prb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, m_t^a, b_{t} ) \prb( s_{t+1}^a = i, m_{t+1}^a = k |  s_t^e, u_{t}, s_{t}^a, m_{t}^a, b_{(s,m),t} ).  \\
+    &\propto \sum_{j=1}^{|S|} \left[ \prb( o_{t+1} |  s_{t+1}^a = i, m_{t+1}^a = k, s_t^e, u_{t}, s_t^a, b_{(s,m),t} ) \right. \nonumber \\ 
+    &~~~~~~~~~~~~~~~~\left. \prb( s_{t+1}^a = i, m_{t+1}^a = k | s_{t}^a=j, u_{t}, m_t^a = k ) \prb( s_{t}^a = j, m_{t}^a = k |  b_{(s,m),t} ) \right],   \\
     &\propto  \sum_{j=1}^{|S|} O(o_{t+1},s_{t+1}^a=i,s_t^a=j,m_t=k) T_s(s_{t+1}^a=i, s_{t}^a=j, m_t ) b_{(s,m),t}(s_t^a = j, m_{t}^a = k).
 \end{align}
  
@@ -112,7 +111,7 @@ The solution is to use a \textbackslash intertext\{ ... \} or \textbackslash sho
 \section{Citations!}
 \theorem{Citation Placeholders}
 
-Inserting a placeholder allows you to keep writing without breaking flow, while making a reminder to come back and resolve it later
+Inserting a placeholder allows you to keep writing without breaking flow, while making a reminder to come back and resolve it later.
 
 \begin{proof}
     Using the new command function, define
@@ -126,7 +125,7 @@ Inserting a placeholder allows you to keep writing without breaking flow, while 
 
     Now, when composing, instead of coming to a stop and immediately looking up the necessary information, you can leave a place holder.  An optional argument allows notes to your future self.
 
-    \begin{quote}
+    \\textit{}begin{quote}
         The quick brown fox \textbackslash unk jumped over the lazy dog \textbackslash unk[the cat]...
     \end{quote}
 
@@ -140,9 +139,9 @@ Inserting a placeholder allows you to keep writing without breaking flow, while 
 \newpage
 \section{Proofing Copy}
 
-\theorem{Proofing}
-
-While the IEEE double column has a clean, professional look, it's often easier to markup double space.  Using a flag, and some header variables, switching between proofing and presentation is as easy as commenting out a line.
+\begin{theorem}[Proofing]
+While the IEEE double column has a clean, professional look, it's often easier to markup double space.  Using a flag, and some header variables, switching between proofing and presentation is as easy as commenting out a line. 
+\end{theorem}
 
 \begin{proof}
 
@@ -186,10 +185,38 @@ While the IEEE double column has a clean, professional look, it's often easier t
         \fi 
     \end{lstlisting}
 
-    \end{proof}
+\end{proof}
 
+
+\section{Expectation, Probability}
+
+The expectation of a random variable, X is $\E(x)$.  The probability of X, $\prb(X = 1)$
 
 \newpage
+
+\section{Adding a copyright notice on the first page}
+
+When posting an IEEE submitted paper to an online archive such as \emph{Arxiv}, authors are supposed to add text to the first page indicating the copyright status.  This is the easiest method to add the text that I have found to date.
+
+\begin{lstlisting}[language=TeX]
+    \makeatletter
+    \def\ps@IEEEtitlepagestyle{%
+      \def\@oddfoot{\mycopyrightnotice}%
+      \def\@oddhead{\hbox{}\@IEEEheaderstyle\leftmark\hfil\thepage}\relax
+      \def\@evenhead{\@IEEEheaderstyle\thepage\hfil\leftmark\hbox{}}\relax
+      \def\@evenfoot{}%
+    }
+    \def\mycopyrightnotice{%
+      \begin{minipage}{\textwidth}
+      \centering \scriptsize
+      % Copyright~\copyright~20xx IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including\\reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works by sending a request to pubs-permissions@ieee.org.
+        This work has been submitted to the IEEE for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible.  
+      \end{minipage}
+    }
+    \makeatother
+\end{lstlisting}
+
+
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
 
